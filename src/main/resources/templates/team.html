@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Create Team</title>
+</head>
+<body>
+
+	<div th:if="${team.teamName != null}">
+		<h1 th:text="'Add Pokemon to Your Team, ' + ${team.teamName} + '!'"></h1>
+	</div>
+	<div th:if="${team.teamName == null}">
+		<h1 th:text="'Name Your Team!'"></h1>
+	</div>
+
+    <form action="#" th:action="@{/team}" th:object="${team}" method="post">
+    	<p>Team Name: <input type="text" th:field="*{teamName}" />
+    		<input type="submit" class="button" name = "saveteamname" value="Save Name" />
+    	</p>
+    </form>
+    
+    <div th:if="${team.pokemonInTeam.size() &lt; 6}">
+    	<form action="#" th:action="@{/team}" th:object="${team}" method="post">
+    		<p>Add Pokemon: <input type="text" th:field="*{pokemonName}" />
+    			<input type="submit" class="button" value="Search" name= "search"/>
+    		</p>
+    	</form>
+    </div>
+    
+    <div th:if="${team.pokemonInTeam.size() == 6}">
+    	Your team in full! Remove one if you would like to search for more Pokemon!
+    </div>
+    
+    <div th:if="${pokemonName != null}">
+    	<form action="#" th:action="@{/team}" th:object="${team}" method="post">
+			<select th:field="*{pokemonName}">
+				<option th:each="pokemonName : ${pokemonName}" th:value="${pokemonName}" th:text="${pokemonName}"></option>
+			</select>
+   			<input type="submit" class="button" value="Select" name= "select"/>
+    	</form>
+    </div>
+    
+    <div th:if="${team.pokemonInTeam.size() >= 1}">
+    	<p  th:text="'Pokemon #1: ' + ${team.pokemonInTeam[0].toString()}" />
+    </div>
+	<div th:if="${team.pokemonInTeam.size() >= 2}" th:text="'Pokemon #2: ' + ${team.pokemonInTeam[1]}"></div>
+    <div th:if="${team.pokemonInTeam.size() >= 3}" th:text="'Pokemon #3: ' + ${team.pokemonInTeam[2]}"></div>
+    <div th:if="${team.pokemonInTeam.size() >= 4}" th:text="'Pokemon #4: ' + ${team.pokemonInTeam[3]}"></div>
+    <div th:if="${team.pokemonInTeam.size() >= 5}" th:text="'Pokemon #5: ' + ${team.pokemonInTeam[3]}"></div>
+    <div th:if="${team.pokemonInTeam.size() >= 6}" th:text="'Pokemon #6: ' + ${team.pokemonInTeam[3]}"></div>
+                        
+</body>
+</html>

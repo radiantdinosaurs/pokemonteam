@@ -177,4 +177,9 @@ public class Pokemon {
         }
         return sb.toString();
     }
+    
+    @Override
+    public String toString() {
+    	return "Name: " + name;
+    }
 }

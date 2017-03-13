@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Team</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1><p th:text="'Add Pokemon to Your Team: ' + ${team.teamName}" /></h1>
+    <form action="#" th:action="@{/teamsubmit}" th:object="${team}" method="post">
+    	<p>Team Name: <input type="text" th:value="*{teamName}" /></p>
+    	<p>Pokemon: <input type="text" th:value="*{team.Pokemon[0]}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</body>
+</html>

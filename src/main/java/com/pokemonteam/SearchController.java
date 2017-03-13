@@ -5,13 +5,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import model.Pokemon;
+import model.Search;
 
 @Controller
+@SessionAttributes({"team"})
 public class SearchController {
-	
-	
+
 	@GetMapping("/search")
 	public String displaySearchPage(Model model) {
 		model.addAttribute("search", new Search());
@@ -28,6 +30,6 @@ public class SearchController {
 		model.addAttribute("pokemonName", pokemonName);
 		model.addAttribute("pokemonWeight", pokemonWeight);
 		model.addAttribute("pokemonHeight", pokemonHeight);
-		return "result";
+		return "redirect:/result";
 	}
 }

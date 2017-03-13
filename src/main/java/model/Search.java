@@ -1,4 +1,4 @@
-package com.pokemonteam;
+package model;
 
 public class Search {
 

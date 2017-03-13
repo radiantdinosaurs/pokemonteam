@@ -11,7 +11,6 @@ import model.Pokemon;
 
 public class RequestService {
 	
-
 	public Pokemon getPokemonFromAPI(String content) {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
