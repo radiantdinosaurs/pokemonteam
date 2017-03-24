@@ -24,7 +24,7 @@ public class CreateTables {
                     Contract.PokemonTable.TEAM_ID + " SMALLINT UNSIGNED NOT NULL, CONSTRAINT `" +
                     Contract.PokemonTable.FK_POKEMON_TEAM + "` FOREIGN KEY (" + 
                     Contract.PokemonTable.TEAM_ID + ") REFERENCES "+ 
-                    Contract.TeamTable.TABLE_NAME + " (" + Contract.TeamTable.TEAM_ID + ") ON DELETE CASCADE ON UPDATE RESTRICT)";
+                    Contract.TeamTable.TABLE_NAME + " (" + Contract.TeamTable.TEAM_ID + ") ON DELETE CASCADE ON UPDATE RESTRICT);";
             stmt.executeUpdate(tableCreationStatement);
         } catch (SQLException e) {
             e.printStackTrace();

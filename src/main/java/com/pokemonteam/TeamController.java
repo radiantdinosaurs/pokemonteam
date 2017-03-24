@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import database.DatabaseReader;
+import database.DatabaseSeeder;
 import model.Pokemon;
 import model.Search;
 import model.Team;
@@ -64,7 +66,9 @@ public class TeamController {
 	
 	@RequestMapping(params={"saveteamtodatabase"}, value="/team", method=RequestMethod.POST)
 	public String saveTeamToDatabase(@ModelAttribute("team") Team team, Model model, BindingResult bindingResult) {
-		
+		DatabaseSeeder ds = new DatabaseSeeder();
+		team.setTeamId(ds.insertTeamIntoDatabase(team));
+		ds.insertPokemonIntoDatabase(team, team.getPokemonInTeam());
 		return "index";
 	}
 

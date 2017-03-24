@@ -11,7 +11,6 @@ import model.Pokemon;
 import model.Search;
 
 @Controller
-@SessionAttributes({"team"})
 public class SearchController {
 
 	@GetMapping("/search")

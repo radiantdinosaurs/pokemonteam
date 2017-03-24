@@ -14,7 +14,7 @@
 	</div>
 
     <form action="#" th:action="@{/team}" th:object="${team}" method="post">
-    	<p>Team Name: <input type="text" th:field="*{teamName}" />
+    	<p>Team Name*: <input type="text" th:field="*{teamName}" />
     		<input type="submit" class="button" name = "saveteamname" value="Save Name" />
     	</p>
     </form>
@@ -48,6 +48,10 @@
     <div th:if="${team.pokemonInTeam.size() >= 4}" th:text="'Pokemon #4: ' + ${team.pokemonInTeam[3]}"></div>
     <div th:if="${team.pokemonInTeam.size() >= 5}" th:text="'Pokemon #5: ' + ${team.pokemonInTeam[3]}"></div>
     <div th:if="${team.pokemonInTeam.size() >= 6}" th:text="'Pokemon #6: ' + ${team.pokemonInTeam[3]}"></div>
+    
+    <form action="#" th:action="@{/team}" th:object="${team}" method="post">
+		<input type="submit" class="button" value="Save Team" th:disabled="${team.teamName == null}" name= "saveteamtodatabase"/>
+    </form>
                         
 </body>
 </html>
